@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify, session
 from flask_migrate import Migrate
+from flask_cors import CORS
 from flask_bcrypt import Bcrypt
 from models import db, Expense
 from auth import auth_bp
@@ -7,6 +8,7 @@ from schemas import ExpenseSchema
 
 # initialize app
 app = Flask(__name__)
+CORS(app, supports_credentials=True)
 
 #app configurations
 app.config["SECRET_KEY"] = "super-secret-key"
